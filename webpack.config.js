@@ -60,9 +60,6 @@ const config = createConfig([
 
   env('development', [
     devServer({
-      contentBase: 'public',
-      stats: 'errors-only',
-      publicPath,
       host: '0.0.0.0',
       port,
     }),
