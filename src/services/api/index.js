@@ -20,7 +20,6 @@ export const parseSettings = ({ method = 'get', data, locale, ...otherSettings }
     Accept: 'application/json',
     'Content-Type': 'application/json',
     'Accept-Language': locale,
-    Authorization: `Token ${getToken()}`,
   }
   const settings = {
     body: data ? JSON.stringify(data) : undefined,

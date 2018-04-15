@@ -18,17 +18,17 @@ const initialState = {
 export const { Types, Creators: Actions } = createActions({
   createPromiseRequest: ['data'],
   createPromiseSuccess: ['payload'],
-  createPromiseFailure: [],
+  createPromiseFailure: ['errorMessage'],
   loginRequest: ['data'],
   loginSuccess: ['payload'],
-  loginFailure: [],
+  loginFailure: ['errorMessage'],
   logout: null,
   fetchPromiseListRequest: ['id'],
   fetchPromiseListSuccess: ['payload'],
-  fetchPromiseListFailure: [],
+  fetchPromiseListFailure: ['errorMessage'],
   fetchUsersRequest: [],
   fetchUsersSuccess: ['payload'],
-  fetchUsersFailure: [],
+  fetchUsersFailure: ['errorMessage'],
 })
 
 export const loginRequest = state =>
@@ -55,14 +55,14 @@ const fetchPromiseListSuccess = (state, { payload }) => {
   console.log(payload)
   return ({ ...state, isFetching: false, promises_as_inviter: payload.promises_as_inviter, promises_as_invitee: payload.promises_as_invitee })
 }
-const fetchPromiseListFailure = state => ({ ...state, isFetching: false, errorMessage: '' })
+const fetchPromiseListFailure = (state, {errorMessage}) => ({ ...state, isFetching: false, errorMessage })
 
 const createPromiseRequest = state => ({ ...state, isFetching: true, errorMessage: '' })
 const createPromiseSuccess = (state, { payload }) => {
   console.log('create', payload)
   return ({ ...state, isFetching: false, promises_as_inviter: [...state.promises_as_inviter, payload.id] })
 }
-const createPromiseFailure = state => ({ ...state, isFetching: false, errorMessage: '' })
+const createPromiseFailure = (state, { errorMessage }) => ({ ...state, isFetching: false, errorMessage })
 
 const fetchUsersRequest = state => ({
   ...state, isFetching: true,
@@ -72,8 +72,8 @@ const fetchUsersSuccess = (state, { payload }) => ({
   ...state, isFetching: false, users: payload,
 })
 
-const fetchUsersFailure = state => ({
-  ...state, isFetching: false,
+const fetchUsersFailure = (state, { errorMessage }) => ({
+  ...state, isFetching: false, errorMessage,
 })
 const handlers = {
   [Types.LOGIN_REQUEST]: loginRequest,

@@ -27,6 +27,7 @@ class LoginPage extends Component {
             <Button onClick={() => this.props.login(this.state)}>LOGIN</Button>
           </Col>
         </Row>
+        <span style={{color: 'red', fontSize: '20px'}}>{this.props.errorMessage}</span>
       </Container>
     )
   }
@@ -36,4 +37,8 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   login: Actions.loginRequest,
 }, dispatch)
 
-export default connect(null, mapDispatchToProps)(LoginPage)
+const mapStateToProps = (state) => ({
+  errorMessage: state.HomePageReducer.errorMessage,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)

@@ -40,6 +40,7 @@ class CreatePromise extends Component {
         {this.props.username &&
         <div>
           <span>USER: {this.props.username}&nbsp;</span> <Button color="link" onClick={this.props.logout}>LOGOUT</Button>
+          <span style={{color: 'red', fontSize: '20px'}}>{this.props.errorMessage}</span>
           <hr />
           <h1>Create Promise</h1>
           <Row>
@@ -120,6 +121,7 @@ const mapStateToProps = (state) => ({
   promises_as_inviter: state.HomePageReducer.promises_as_inviter,
   promises_as_invitee: state.HomePageReducer.promises_as_invitee,
   users: state.HomePageReducer.users,
+  errorMessage: state.HomePageReducer.errorMessage,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreatePromise)
