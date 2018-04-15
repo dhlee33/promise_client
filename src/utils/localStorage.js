@@ -8,7 +8,7 @@ export const KEYS = {
   login: 'login',
   username: 'username',
   accessToken: 'access_token',
-  refreshToken: 'refresh_token',
+  userId: 'userId',
 }
 
 const get = (key) => store.get(`@${namespace}:${key}`)
@@ -31,3 +31,9 @@ export const getUsername = () => get(KEYS.username)
 export const saveUsername = username => set(KEYS.username, username)
 
 export const removeUsername = () => remove(KEYS.username)
+
+export const getUserId = () => get(KEYS.userId)
+
+export const saveUserId = userId => set(KEYS.userId, userId)
+
+export const removeUserId = () => remove(KEYS.userId)

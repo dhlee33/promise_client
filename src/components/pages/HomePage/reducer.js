@@ -1,13 +1,18 @@
 import { createActions, createReducer } from 'reduxsauce'
-import { getToken, getUsername, removeTokens, removeUsername, saveUsername } from '../../../utils/localStorage'
-import { WAIT_FOR_ACTION, ERROR_ACTION } from 'redux-wait-for-action'
+import {
+  getToken, getUserId, getUsername, removeTokens, removeUsername,
+  saveUsername, saveUserId, removeUserId,
+} from '../../../utils/localStorage'
 
 const initialState = {
   isFetching: false,
-  Promises: [],
+  promises_as_inviter: [],
+  promises_as_invitee: [],
   isAuthenticated: !!getToken(),
   errorMessage: '',
   username: getUsername() || '',
+  userId: getUserId() || '',
+  users: [],
 }
 
 export const { Types, Creators: Actions } = createActions({
@@ -18,42 +23,71 @@ export const { Types, Creators: Actions } = createActions({
   loginSuccess: ['payload'],
   loginFailure: [],
   logout: null,
-  fetchPromiseListRequest: [],
+  fetchPromiseListRequest: ['id'],
   fetchPromiseListSuccess: ['payload'],
   fetchPromiseListFailure: [],
+  fetchUsersRequest: [],
+  fetchUsersSuccess: ['payload'],
+  fetchUsersFailure: [],
 })
 
 export const loginRequest = state =>
   ({ ...state, isFetching: true, isAuthenticated: false, errorMessage: '' })
 export const loginSuccess = (state, { payload }) => {
   saveUsername(payload.username)
+  saveUserId(payload.id)
   console.log(state)
-  return { ...state, isFetching: false, isAuthenticated: true, errorMessage: '', username: payload.login }
+  return { ...state, isFetching: false, isAuthenticated: true, errorMessage: '', username: payload.username, userId: payload.id }
 }
-
 export const loginFailure = (state, { errorMessage }) =>
+
   ({ ...state, isFetching: false, isAuthenticated: false, errorMessage })
 
 export const logout = (state) => {
   removeTokens()
   removeUsername()
-  return { ...state, isFetching: false, isAuthenticated: false, username: '' }
+  removeUserId()
+  return { ...state, isFetching: false, isAuthenticated: false, username: '', userId: '' }
 }
 
-const request = state => ({ ...state, isFetching: true, errorMessage: '' })
-const success = (state, { payload }) => {
+const fetchPromiseListRequest = state => ({ ...state, isFetching: true, errorMessage: '' })
+const fetchPromiseListSuccess = (state, { payload }) => {
   console.log(payload)
-  return ({ ...state, isFetching: false, Promises: {} })
+  return ({ ...state, isFetching: false, promises_as_inviter: payload.promises_as_inviter, promises_as_invitee: payload.promises_as_invitee })
 }
-const failure = state => ({ ...state, isFetching: false, errorMessage: '' })
+const fetchPromiseListFailure = state => ({ ...state, isFetching: false, errorMessage: '' })
 
+const createPromiseRequest = state => ({ ...state, isFetching: true, errorMessage: '' })
+const createPromiseSuccess = (state, { payload }) => {
+  console.log('create', payload)
+  return ({ ...state, isFetching: false, promises_as_inviter: [...state.promises_as_inviter, payload.id] })
+}
+const createPromiseFailure = state => ({ ...state, isFetching: false, errorMessage: '' })
+
+const fetchUsersRequest = state => ({
+  ...state, isFetching: true,
+})
+
+const fetchUsersSuccess = (state, { payload }) => ({
+  ...state, isFetching: false, users: payload,
+})
+
+const fetchUsersFailure = state => ({
+  ...state, isFetching: false,
+})
 const handlers = {
   [Types.LOGIN_REQUEST]: loginRequest,
   [Types.LOGIN_SUCCESS]: loginSuccess,
   [Types.LOGIN_FAILURE]: loginFailure,
   [Types.LOGOUT]: logout,
-  [Types.CREATE_PROMISE_REQUEST]: request,
-  [Types.CREATE_PROMISE_SUCCESS]: success,
-  [Types.CREATE_PROMISE_FAILURE]: failure,
+  [Types.CREATE_PROMISE_REQUEST]: createPromiseRequest,
+  [Types.CREATE_PROMISE_SUCCESS]: createPromiseSuccess,
+  [Types.CREATE_PROMISE_FAILURE]: createPromiseFailure,
+  [Types.FETCH_PROMISE_LIST_REQUEST]: fetchPromiseListRequest,
+  [Types.FETCH_PROMISE_LIST_SUCCESS]: fetchPromiseListSuccess,
+  [Types.FETCH_PROMISE_LIST_FAILURE]: fetchPromiseListFailure,
+  [Types.FETCH_USERS_REQUEST]: fetchUsersRequest,
+  [Types.FETCH_USERS_SUCCESS]: fetchUsersSuccess,
+  [Types.FETCH_USERS_FAILURE]: fetchUsersFailure,
 }
 export default createReducer(initialState, handlers)

@@ -20,7 +20,7 @@ export const parseSettings = ({ method = 'get', data, locale, ...otherSettings }
     Accept: 'application/json',
     'Content-Type': 'application/json',
     'Accept-Language': locale,
-    Authorization: getToken(),
+    Authorization: `Token ${getToken()}`,
   }
   const settings = {
     body: data ? JSON.stringify(data) : undefined,
@@ -58,7 +58,7 @@ api.create = (settings = {}) => ({
   setToken(token) {
     this.settings.headers = {
       ...this.settings.headers,
-      Authorization: `Token ${token}`,
+      Authorization: `Token ${getToken()}`,
     }
   },
 
