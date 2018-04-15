@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { Row, Col, Container, Input, Button } from 'reactstrap'
 import moment from 'moment'
 import { Actions } from './reducer'
+import PromiseList from './PromiseList'
 
 class CreatePromise extends Component {
   constructor(props) {
@@ -84,24 +85,7 @@ class CreatePromise extends Component {
             </Col>
           </Row>
           <hr />
-          <h1>Promises</h1>
-          <div>
-            <span>promises as inviter: </span>
-            {this.props.promises_as_inviter.map(p => <span>{p} </span>)}
-          </div>
-          <div>
-            <span>promises as invitee: </span>
-            {this.props.promises_as_invitee.map(p => <span>{p} </span>)}
-          </div>
-          {/* {this.state.Promises.length === 0 && <div>There is no promises</div>} */}
-          {/* {this.state.Promises.map(p => ( */}
-          {/* <div> */}
-          {/* <div>sinceWhen: <span>{p.sinceWhen}</span></div> */}
-          {/* <div>tilWhen: <span>{p.tilWhen}</span></div> */}
-          {/* <div>user2: <span>{p.user2Id}</span></div> */}
-          {/* <hr /> */}
-          {/* </div> */}
-          {/* ))} */}
+          <PromiseList />
         </div>
       }
       </Container>
@@ -118,8 +102,6 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 const mapStateToProps = (state) => ({
   username: state.HomePageReducer.username,
   userId: state.HomePageReducer.userId,
-  promises_as_inviter: state.HomePageReducer.promises_as_inviter,
-  promises_as_invitee: state.HomePageReducer.promises_as_invitee,
   users: state.HomePageReducer.users,
   errorMessage: state.HomePageReducer.errorMessage,
 })
