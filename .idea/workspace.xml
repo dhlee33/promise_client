@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df9b552f-2cef-4264-b846-f795b4b27107" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/pages/HomePage/CreatePromise.js" afterPath="$PROJECT_DIR$/src/components/pages/HomePage/CreatePromise.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/HomePage/reducer.js" afterPath="$PROJECT_DIR$/src/components/pages/HomePage/reducer.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreatePromise.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CreatePromise.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/HomePage/CreatePromise.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="542">
@@ -50,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reducer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reducer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/HomePage/reducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1278">
-              <caret line="75" column="44" lean-forward="false" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
+            <state relative-caret-position="274">
+              <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -165,10 +165,10 @@
         <option value="$PROJECT_DIR$/src/components/pages/HomePage/index.js" />
         <option value="$PROJECT_DIR$/src/components/pages/HomePage/constants.js" />
         <option value="$PROJECT_DIR$/src/components/pages/HomePage/saga.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/HomePage/reducer.js" />
         <option value="$PROJECT_DIR$/src/components/pages/HomePage/LoginPage.js" />
         <option value="$PROJECT_DIR$/src/components/pages/HomePage/PromiseList.js" />
         <option value="$PROJECT_DIR$/src/components/pages/HomePage/CreatePromise.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/HomePage/reducer.js" />
       </list>
     </option>
   </component>
@@ -330,12 +330,12 @@
       <workItem from="1523674475355" duration="4921000" />
       <workItem from="1523688997402" duration="14519000" />
       <workItem from="1523772062280" duration="13174000" />
-      <workItem from="1523790012514" duration="768000" />
+      <workItem from="1523790012514" duration="1422000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33382000" />
+    <option name="totallyTimeSpent" value="34036000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-4" width="1922" height="1085" extended-state="6" />
@@ -771,16 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/HomePage/reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="75" column="44" lean-forward="false" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/HomePage/PromiseList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -805,6 +795,16 @@
           <caret line="95" column="25" lean-forward="true" selection-start-line="95" selection-start-column="25" selection-end-line="95" selection-end-column="25" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/HomePage/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>

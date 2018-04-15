@@ -53,14 +53,14 @@ export const logout = (state) => {
 const fetchPromiseListRequest = state => ({ ...state, isFetching: true, errorMessage: '' })
 const fetchPromiseListSuccess = (state, { payload }) => {
   console.log(payload)
-  return ({ ...state, isFetching: false, promises_as_inviter: payload.promises_as_inviter, promises_as_invitee: payload.promises_as_invitee })
+  return ({ ...state, isFetching: false, errorMessage: '', promises_as_inviter: payload.promises_as_inviter, promises_as_invitee: payload.promises_as_invitee })
 }
 const fetchPromiseListFailure = (state, {errorMessage}) => ({ ...state, isFetching: false, errorMessage })
 
 const createPromiseRequest = state => ({ ...state, isFetching: true, errorMessage: '' })
 const createPromiseSuccess = (state, { payload }) => {
   console.log('create', payload)
-  return ({ ...state, isFetching: false, promises_as_inviter: [...state.promises_as_inviter, payload.id] })
+  return ({ ...state, errorMessage: '', isFetching: false, promises_as_inviter: [...state.promises_as_inviter, payload.id] })
 }
 const createPromiseFailure = (state, { errorMessage }) => ({ ...state, isFetching: false, errorMessage })
 
@@ -69,7 +69,7 @@ const fetchUsersRequest = state => ({
 })
 
 const fetchUsersSuccess = (state, { payload }) => ({
-  ...state, isFetching: false, users: payload,
+  ...state, isFetching: false, users: payload, errorMessage: '',
 })
 
 const fetchUsersFailure = (state, { errorMessage }) => ({
