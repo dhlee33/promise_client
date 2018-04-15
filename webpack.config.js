@@ -60,11 +60,8 @@ const config = createConfig([
 
   env('development', [
     devServer({
-      contentBase: 'public',
-      stats: 'errors-only',
-      publicPath,
-      host,
-      port,
+      inline: true,
+      port: 3000,
     }),
     sourceMaps(),
     addPlugins([
