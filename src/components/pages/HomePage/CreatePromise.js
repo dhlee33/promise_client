@@ -77,7 +77,7 @@ class CreatePromise extends Component {
                 onChange={e => this.setState({ user2: e.target.value })}
               >
                 <option>Select User 2</option>
-                {this.props.users.map(u => <option>{u.id}</option>)}
+                {this.props.users.map(u => <option value={u.id}>{u.username}</option>)}
               </Input>
             </Col>
             <Col>
