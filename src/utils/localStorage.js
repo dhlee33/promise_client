@@ -2,7 +2,7 @@
 
 import store from 'store/dist/store.modern'
 
-const namespace = 'easi6-customer-admin'
+const namespace = 'promises'
 export const KEYS = {
   user: 'user',
   login: 'login',

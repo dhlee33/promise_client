@@ -55,7 +55,7 @@ class CreatePromise extends Component {
                     })
                   }
                 }}
-                inputProps={{placeholder: 'sinceWhen'}}
+                inputProps={{placeholder: 'Select SinceWhen', onChange: () => {return}}}
               />
             </Col>
             <Col sm={3}>
@@ -68,7 +68,7 @@ class CreatePromise extends Component {
                     })
                   }
                 }}
-                inputProps={{placeholder: 'tilWhen'}}
+                inputProps={{placeholder: 'Select TilWhen', onChange: () => {return}}}
               />
             </Col>
             <Col sm={3}>
